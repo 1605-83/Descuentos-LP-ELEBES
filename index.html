@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Descuentos y Dinámicas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F5F8;--card:#fff;--ink:#14181F;--ink2:#5B6472;--line:#DDE2EA;--marca:#0B2545;--auto:#1E8E5A;--grupo:#D9822B;--f-num:"IBM Plex Mono",ui-monospace,Consolas,monospace}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#F3F5F8; } }
+:root[data-theme="dark"]{ --bg:#F3F5F8; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Archivo,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.35}
+.wrap{max-width:1100px;margin:0 auto;padding:18px 16px 48px}
+header{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;justify-content:space-between}
+h1{margin:0;font-size:1.45rem;font-weight:800;color:var(--marca)}
+.sub{margin:4px 0 0;color:var(--ink2);font-size:.88rem}
+.sub a{color:var(--marca)}
+.arriba{position:sticky;top:0;z-index:3;background:var(--bg);padding:12px 0 8px;margin-top:10px;border-bottom:1px solid var(--line)}
+.buscar{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.buscar:focus-visible{outline:2px solid var(--marca);outline-offset:1px}
+nav{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 0 2px}
+nav::-webkit-scrollbar{display:none}
+nav button{flex:0 0 auto;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;color:var(--marca);background:#fff;border:1.5px solid var(--marca);border-radius:999px;padding:6px 13px;white-space:nowrap}
+nav button[aria-pressed="true"]{background:var(--marca);color:#fff}
+.ley{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.8rem;color:var(--ink2);margin-top:6px}
+.tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.74rem;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#fff;white-space:nowrap}
+.t-auto{background:var(--auto)}.t-grupo{background:var(--grupo)}
+section{margin-top:22px}
+section>h2{margin:0 0 10px;font-size:1.1rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--marca);border-top:3px solid var(--marca);padding-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.card h3{margin:0 0 4px;font-size:.98rem;font-weight:800;display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.card .nota{margin:4px 0 8px;color:var(--ink2);font-size:.82rem}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:6px 6px;border-bottom:1px solid #EEF1F5;text-align:left;vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink2);font-weight:700}
+td.cod{font-family:var(--f-num);color:var(--ink2);white-space:nowrap}
+td.d,th.d{text-align:right;white-space:nowrap}
+td.d b{font-family:var(--f-num);font-size:1rem;color:var(--auto)}
+.escala{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.esc{flex:1 1 72px;min-width:72px;border:1px solid var(--line);border-radius:9px;padding:6px 8px;text-align:center;background:#FAFBFD}
+.esc small{display:block;color:var(--ink2);font-size:.72rem}
+.esc b{font-family:var(--f-num);font-size:1.05rem;color:var(--marca)}
+mark{background:#FFF1A8;color:inherit;padding:0}
+.vacio{padding:24px;text-align:center;color:var(--ink2)}
+[hidden]{display:none!important}
+footer{margin-top:28px;color:var(--ink2);font-size:.8rem}
+@media print{.arriba{position:static}nav,.buscar{display:none}.card{break-inside:avoid}.tag{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Descuentos y dinámicas vigentes</h1>
+      <p class="sub">Lago Puelo · Elebes · copiado de la <a href="https://docs.google.com/spreadsheets/d/1CLs1VpJg1qK7XCdSD_sQGomniHcbyiakgwasUpkvGSc/edit" target="_blank" rel="noopener">planilla de descuentos</a> el 22/10/2026</p>
+    </div>
+  </header>
+  <div class="arriba">
+    <input class="buscar" id="q" type="search" placeholder="Buscar producto, marca o código (ej. Poett, 1553, Fernet)" aria-label="Buscar descuento" autocomplete="off">
+    <nav id="chips" aria-label="Proveedores"></nav>
+    <div class="ley"><span><span class="tag t-auto">Sale automático</span> no hace falta pasarlo al grupo si se respetan las cantidades</span><span><span class="tag t-grupo">Pasar al grupo</span> hay que enviarlo al grupo para que se aplique</span></div>
+  </div>
+  <div id="lista"></div>
+  <footer>Los descuentos son los de la planilla. Si la planilla cambia, avisá para actualizar esta página.</footer>
+</div>
+<script>
+// ---- Datos de la planilla (22/10/2026). Cada bloque: proveedor, titulo, modo (auto/grupo), nota, y escala o filas ----
+const A='auto', G='grupo';
+const ESC_CLOROX=[['1 a 4 bultos','20%'],['5 a 14','23%'],['15 a 24','25%'],['25 o más','27%']];
+const BLOQUES=[
+  // SOFTYS
+  {p:'Softys', t:'Cód. 1553 · Higienol', m:A, esc:[['1 a 9 bultos','15%'],['10 a 29','20%'],['60 o más (acompañado)','30%']]},
+  {p:'Softys', t:'Cód. 1627 · Higienol HS Balanced', m:A, esc:[['1 a 9 bultos','10%'],['10 a 29','15%'],['60 o más','19%']]},
+  {p:'Softys', t:'Cód. 5688', m:A, esc:[['1 a 29 bultos','5%'],['30 a 47','10%'],['48 o más','18%']]},
+  {p:'Softys', t:'Toallitas femeninas', m:G, n:'5 bultos o más', esc:[['5 bultos o más','3%']]},
+  {p:'Softys', t:'Pañales', m:G, n:'Sin mínimo', esc:[['Sin mínimo','10%']]},
+  {p:'Softys', t:'Cód. 1585', m:G, n:'Acompañado', esc:[['1 a 14 bultos','15%'],['15 o más','21%']]},
+  // CLOROX
+  {p:'Clorox', t:'Cód. 17927', m:G, esc:ESC_CLOROX},
+  {p:'Clorox', t:'Cód. 36003', m:G, esc:ESC_CLOROX},
+  {p:'Clorox', t:'Cód. 34320 / 34324 / etc. · Poett 900', m:G, esc:ESC_CLOROX,
+    n:'Las lavandinas clásicas pueden combinar bultos (ej.: 2 b de litro + 3 b de dos litros). Los Poett de 900 pueden combinar fragancias siempre que lleguen a 24 unidades.'},
+  {p:'Clorox', t:'Descuentos por cantidad (Ayudín, Poett, Selton, Mortimer)', m:A, n:'Respetando la cantidad mínima sale solo.', cols:['Cód.','Producto','Mínimo','Desc.'], filas:[
+    ['36004','Ayudín Lavandina Original 4L','3 unidades','7%'],['60222','Ayudín Lavanda Triple Poder 1L','15 unidades','15%'],['60226','Ayudín PurGlac Triple Poder 1L','15 unidades','15%'],
+    ['60223','Ayudín Lavanda Triple Poder 2L','8 unidades','15%'],['60227','Ayudín PurGlac Triple Poder 2L','8 unidades','15%'],['60233','Ayudín Lavandina Gel Original 700ml','15 unidades','15%'],
+    ['60234','Ayudín Lavandina Gel Cítrica 700ml','15 unidades','15%'],['60237','Ayudín Lavandina Gel Floral 700ml','15 unidades','15%'],['60239','Ayudín Lavandina Gel Menta 700ml','15 unidades','15%'],
+    ['60240','Ayudín Lavandina Gel Lavanda 700ml','15 unidades','15%'],['61575','Ayudín Antihongos doypack x 450 ml','16 unidades','5%'],['61576','Ayudín Baño doypack x 450 ml','16 unidades','5%'],
+    ['61577','Ayudín Cocina doypack x 450 ml','16 unidades','5%'],['60885','Poett Aerosol Lavanda 360cc','6 unidades','15%'],['60886','Poett Aerosol Primavera 360cc','6 unidades','15%'],
+    ['60887','Poett Aerosol Bebé 360cc','6 unidades','15%'],['60888','Poett Aerosol Suavidad de Algodón 360cc','6 unidades','15%'],['61034','Poett Aerosol Mus en Primavera 360cc','6 unidades','15%'],
+    ['61036','Poett Aerosol Espíritu Play 360cc','6 unidades','15%'],['61032','Poett Aerosol Solo Para Ti 360cc','6 unidades','15%'],['61033','Poett Aerosol Despertar de Energía 360cc','6 unidades','15%'],
+    ['61035','Poett Aerosol Alegra tu Día 360cc','6 unidades','15%'],['50090','Poett Aerosol Huellitas 360cc','6 unidades','15%'],['61816','Selton Mata Mosquitos Rojo 360ml','6 unidades','20%'],
+    ['61731','Selton Mata Cucarachas Negro 360ml','6 unidades','15%'],['61814','Selton Mata Mosquitos Azul 360ml','6 unidades','15%'],['36012','Selton Espirales x 12 unid.','12 unidades','15%'],
+    ['50060','Selton Espirales Violetas x 12 unid.','12 unidades','15%'],['61046','Ayudín Ropa Blanca x 1 lt','15 unidades','18%'],['61047','Ayudín Ropa Blanca x 2 lt','8 unidades','18%'],
+    ['19861','Poett Fraganza Algodón Gatillo x 250','12 unidades','15%'],['19874','Poett Fraganza Suavidad Bebé Gatillo x 250','12 unidades','15%'],['19859','Poett Fraganza Sed. Primavera Gatillo x 250','12 unidades','15%'],
+    ['19860','Poett Fraganza Fresco Rocío Gatillo x 250','12 unidades','15%'],['32412','Poett Fraganza Alegra tu Día Gatillo x 250','12 unidades','15%'],['50087','Poett Fraganza Huellitas Gatillo x 250','12 unidades','15%'],
+    ['18147','Mortimer Esponja Cuadriculada','12 unidades','25%'],['36027','Mortimer Lisita 8/12CT','12 unidades','25%'],['36022','Mortimer Bolsa Normal x15 45x55','3 unidades','10%'],
+    ['36024','Mortimer Bolsa Mediana x15 50x60','3 unidades','10%'],['36026','Mortimer Bolsa Consorcio x10 60x90','3 unidades','10%'],['50017','Mortimer Guantes E.F. Naranja S','3 unidades','10%'],
+    ['50018','Mortimer Guantes E.F. Naranja M','3 unidades','10%'],['50019','Mortimer Guantes E.F. Naranja L','3 unidades','10%'],['50020','Mortimer Guantes Fuertes Verdes S','3 unidades','10%'],
+    ['50021','Mortimer Guantes Fuertes Verdes M','3 unidades','10%'],['50022','Mortimer Guantes Fuertes Verdes L','3 unidades','10%']]},
+  // OM (golosinas)
+  {p:'OM', t:'Golosinas: 10% a partir de 4 unidades surtidas', m:A, n:'A partir de 4 unidades surtidas de estos productos: 10% de descuento.', cols:['Cód.','Producto'], filas:[
+    ['2331588','Flynn Paff bolsa tutti frutti 8x8gr'],['2332982','Flynn Paff chupetín manzana 18x18gr'],['2332900','Flynn Paff bolsa uva 36x8gr'],['2332820','Flynn Paff estuche yogur frutilla/banana 12x8gr'],
+    ['2332902','Flynn Paff bolsa frutilla 36x8gr'],['233380','Namur turrón de maní 25gr'],['2331502','Flow barra granola c/almendras y frutas 20x23gr'],['2332981','Flynn Paff chupetín uva 18x18gr'],
+    ['2332908','Flynn Paff bolsa surtida 8x8gr'],['233265','Flynn Paff estuche banana 12x8gr'],['2332963','Flynn Paff chupetín cereza 18x18gr'],['2337011','Mantecol café 1x40x111gr'],
+    ['2332006','Flow barra con frutas 20x23gr'],['2332824','Flynn Paff XXL limón-berry 12x30gr'],['2332810','Flynn Paff XXL 12x30gr'],['23343913','Lengüetazo frambuesa 18x32x13gr'],
+    ['2332102','Caramelo dulce de leche relleno ddl 450gr'],['2332907','Flynn Paff bolsa surtida 36x8gr'],['2332000','Flow barra granola c/chips de chocolate 20x23gr'],['23329614','Flynn Paff chupetín tutti frutti 18x18gr'],
+    ['2331988','Flow cereal Honey Crunch 16x180g'],['233266','Flynn Paff estuche uva 12x8gr'],['2332823','Flynn Paff estuche limón-berry 12x8gr']]},
+  {p:'OM', t:'Mantecol', m:A, n:'Cód. 111: sí o sí acompañado de Biggys, productos de fiesta, cereales o barritas.', esc:[['1 bulto','15%']]},
+  {p:'OM', t:'Mantecol por cajas (cód. 253, 404, Marmolado, Lingote)', m:A, esc:[['1 caja','5,2%'],['5 cajas','8%'],['10 cajas','10%'],['30 cajas','15%']]},
+  {p:'OM', t:'Otros productos (condición y descuento)', m:A, cols:['Producto / condición','Desc.'], filas:[
+    ['Aceite Tayal 1x16','10%'],['Aceite El Gran Juicio 500ml','8%'],['Harina para arepas x 1kg','5%'],['Pan rallado x 1kg','5%'],['Harina para arepas maíz amarillo x 1kg','5%'],
+    ['Aceite de oliva EV PET verde x 250ml','8%'],['Atún desmenuzado en aceite 48 x 170 gr','8%'],['Atún desmenuzado natural Morixe 170 gr','8%'],['Champignones en trozos Morixe 24 x 400gr','5%'],
+    ['Pimientos morrones enteros 12 x 750gr','5%'],['Pategrás 1 caja o más','5%'],['Medallones 1 caja','5%'],['Salchichas por caja (automático)','unidad sin cargo'],['Fullmint','3 + 1'],
+    ['Polvo Toddy · 1 caja','5,2%'],['Polvo Toddy · 5 cajas','10%'],['Galletitas Toddy · 1 caja','5%'],['Galletitas Toddy · 5 cajas','10%']]},
+  // ILOLAY
+  {p:'Ilolay', t:'Descuento por producto', m:A, cols:['Cód.','Producto','Desc.'], filas:[
+    ['1040','Crema doble x 200ml','1,7%'],['6001','Dulce de leche clásico x 400g','5%'],['1614','Queso crema clásico (nuevo) 290gr','4%'],['1615','Queso crema balance 290gr','4%'],
+    ['3670','Yogur natural PD x 350','4%'],['1032','Manteca s/sal y s/vitaminas x 200g','2,2%'],['2070','Postre vainilla c/confites x 110g','16,4%'],['3600','Yogur firme entero frutilla pote x 190g','14%'],
+    ['3601','Yogur firme entero vainilla pote x 190g','14%'],['3700','Yogur c/cereal entero pote x 165g','1,7%'],['1801','Display 20 queso rallado x 40g','2,8%'],['4140','Yogur bebible entero frutilla x 900gr Multivit.','18,1%'],
+    ['4141','Yogur bebible entero vainilla x 900gr Multivit.','18,1%'],['4230','Yogur TTOP PD frutilla x 950 grs','19,1%'],['4231','Yogur TTOP PD vainilla x 950 grs','19,1%']]},
+  {p:'Ilolay', t:'Leche Ilolay (cód. 5200 - 5250)', m:A, n:'Acompañado de mínimo 3 unidades de 5322 o 5323.', esc:[['3 cajas','4,4%'],['5 cajas','6,6%'],['10 cajas','8,1%'],['15 cajas','10,3%'],['75 cajas o más','15,4%']]},
+  {p:'OM', t:'Danbo Las Tres Niñas (cód. 13)', m:A, esc:[['1 caja','5%'],['3 cajas','8%'],['5 cajas','13%']]},
+  // CEPAS
+  {p:'Cepas', t:'Descuentos Cepas', m:A, cols:['Producto','Regla / descuento'], filas:[
+    ['Pronto 473ml','8%'],['Marcela','8%'],['Fever Tree','16%'],['Gancia Hibiscus 750','8%'],['Gancia Cero','8%'],['Fernet 1882 750 cc','13,67%'],['Bombay x 700','8%'],
+    ['Tres Torres','8%'],['Nikov','20%'],['Jamaica','30%'],['Acción Dr. Lemon XL','11 + 1'],['Acción Dr. Lemon lata','11 + 1'],['Martini Rosso','5 + 1'],['Todo Cepas lineal','5%']]},
+  // LEDESMA
+  {p:'Ledesma', t:'Azúcar Ledesma clásica (cód. 69300)', m:A, esc:[['10 bultos','3%'],['50 bultos','6%'],['100 bultos','10%'],['130 bultos','15%']]},
+  // OTRAS MARCAS
+  {p:'Otras marcas', t:'Descuento por proveedor', m:A, cols:['Proveedor / producto','Desc.'], filas:[
+    ['Talitas','5%'],['Fecovita','5%'],['Maniking','5%'],['Tres Arroyos','5%'],['Sopa Ajinomoto','3%'],['Harina de arepa (mínimo 5 un.)','5%'],['Urquiza','5%'],
+    ['Aceite de oliva Morixe','8%'],['Aceite El Gran Juicio','8%'],['Gin Merle','5%'],['San Huberto','5%'],['Chacabuco','5%'],['Tayal','10%'],['Ecovita (mínimo 1 bulto)','7%'],
+    ['Castell','5%'],['Pochoclos Biggys (10 u.)','5%'],['Pochoclos Biggys (20 u. o más)','8%'],['Cereal Flow y Toddy','12%'],['Luigi Bosca','5%'],['Suiza','5%'],['Porta','10%'],
+    ['Necho S.A.','5%'],['Celusal (sal fina x 500 cc, acompañada)','5 - 10%'],['Ledesma','escala 3 - 6 - 10 - 15%'],['Línea Dorada cuartirolo y muzzarella','12%'],
+    ['Bolsa Flynn Paff 2331588','13%'],['Chupetín manzana 2332982','10%'],['Flynn Paff estuche yogur banana/frutilla 2332820','10%'],
+    ['2339614 · 2332963 · 2332982 · 2332981 (solo si están los 4 códigos)','12%'],['Conguitos Lacasa','12%'],['Dreamco','5%']]}
+];
+const PROV=['Softys','Clorox','OM','Ilolay','Cepas','Ledesma','Otras marcas'];
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const hl=(t,q)=>{ t=String(t); if(!q) return esc(t); const i=norm(t).indexOf(q); return i<0? esc(t) : esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+q.length))+'</mark>'+esc(t.slice(i+q.length)); };
+let elegido='';
+
+function dibujar(){
+  const q=norm($('q').value.trim());
+  $('chips').innerHTML=['Todos',...PROV].map(p=>`<button type="button" data-p="${p==='Todos'?'':esc(p)}" aria-pressed="${(p==='Todos'&&!elegido)||p===elegido}">${esc(p)}</button>`).join('');
+  let h='';
+  for(const p of PROV){ if(elegido && p!==elegido) continue;
+    const cards=BLOQUES.filter(b=>b.p===p).map(b=>{
+      const enTit=!q || norm(b.t+' '+(b.n||'')+' '+b.p).includes(q);
+      const filas=b.filas? b.filas.filter(f=>enTit || norm(f.join(' ')).includes(q)) : null;
+      if(!enTit && !(filas&&filas.length)) return '';
+      const tag=`<span class="tag ${b.m===A?'t-auto':'t-grupo'}">${b.m===A?'Sale automático':'Pasar al grupo'}</span>`;
+      let c=`<div class="card"><h3><span>${hl(b.t,q)}</span>${tag}</h3>${b.n? `<p class="nota">${hl(b.n,q)}</p>` : ''}`;
+      if(b.esc) c+=`<div class="escala">${b.esc.map(e=>`<div class="esc"><small>${esc(e[0])}</small><b>${esc(e[1])}</b></div>`).join('')}</div>`;
+      if(filas){ const nd=b.cols.length-1;
+        c+=`<table><thead><tr>${b.cols.map((x,i)=>`<th class="${i===nd?'d':''}">${esc(x)}</th>`).join('')}</tr></thead><tbody>${filas.map(f=>`<tr>${f.map((x,i)=>`<td class="${i===nd?'d':(b.cols[i]==='Cód.'?'cod':'')}">${i===nd? `<b>${esc(x)}</b>` : hl(x,q)}</td>`).join('')}</tr>`).join('')}</tbody></table>`; }
+      return c+'</div>';
+    }).join('');
+    if(cards) h+=`<section><h2>${esc(p)}</h2><div class="grid">${cards}</div></section>`;
+  }
+  $('lista').innerHTML=h||'<div class="vacio">Ningún descuento coincide con la búsqueda.</div>';
+}
+$('q').addEventListener('input',dibujar);
+$('chips').addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; elegido=b.dataset.p; dibujar(); });
+dibujar();
+</script>
+</body>
+</html>
