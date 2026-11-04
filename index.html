@@ -68,7 +68,7 @@ footer{margin-top:28px;color:var(--ink2);font-size:.8rem}
   <footer>Los descuentos son los de la planilla. Si la planilla cambia, avisá para actualizar esta página.</footer>
 </div>
 <script>
-// ---- Datos de la planilla (22/10/2026). Cada bloque: proveedor, titulo, modo (auto/grupo), nota, y escala o filas ----
+// ---- Datos de la planilla (22/10/2026; Clorox actualizado 04/11/2026). Cada bloque: proveedor, titulo, modo (auto/grupo), nota, y escala o filas ----
 const A='auto', G='grupo';
 const ESC_CLOROX=[['1 a 4 bultos','20%'],['5 a 14','23%'],['15 a 24','25%'],['25 o más','27%']];
 const BLOQUES=[
@@ -84,7 +84,7 @@ const BLOQUES=[
   {p:'Clorox', t:'Cód. 36003', m:G, esc:ESC_CLOROX},
   {p:'Clorox', t:'Cód. 34320 / 34324 / etc. · Poett 900', m:G, esc:ESC_CLOROX,
     n:'Las lavandinas clásicas pueden combinar bultos (ej.: 2 b de litro + 3 b de dos litros). Los Poett de 900 pueden combinar fragancias siempre que lleguen a 24 unidades.'},
-  {p:'Clorox', t:'Descuentos por cantidad (Ayudín, Poett, Selton, Mortimer)', m:A, n:'Respetando la cantidad mínima sale solo.', cols:['Cód.','Producto','Mínimo','Desc.'], filas:[
+  {p:'Clorox', t:'Descuentos por cantidad (Ayudín, Poett, Selton, Trenet, Mortimer)', m:A, n:'Respetando la cantidad mínima sale solo.', cols:['Cód.','Producto','Mínimo','Desc.'], filas:[
     ['36004','Ayudín Lavandina Original 4L','3 unidades','7%'],['60222','Ayudín Lavanda Triple Poder 1L','15 unidades','15%'],['60226','Ayudín PurGlac Triple Poder 1L','15 unidades','15%'],
     ['60223','Ayudín Lavanda Triple Poder 2L','8 unidades','15%'],['60227','Ayudín PurGlac Triple Poder 2L','8 unidades','15%'],['60233','Ayudín Lavandina Gel Original 700ml','15 unidades','15%'],
     ['60234','Ayudín Lavandina Gel Cítrica 700ml','15 unidades','15%'],['60237','Ayudín Lavandina Gel Floral 700ml','15 unidades','15%'],['60239','Ayudín Lavandina Gel Menta 700ml','15 unidades','15%'],
@@ -92,15 +92,15 @@ const BLOQUES=[
     ['61577','Ayudín Cocina doypack x 450 ml','16 unidades','5%'],['60885','Poett Aerosol Lavanda 360cc','6 unidades','15%'],['60886','Poett Aerosol Primavera 360cc','6 unidades','15%'],
     ['60887','Poett Aerosol Bebé 360cc','6 unidades','15%'],['60888','Poett Aerosol Suavidad de Algodón 360cc','6 unidades','15%'],['61034','Poett Aerosol Mus en Primavera 360cc','6 unidades','15%'],
     ['61036','Poett Aerosol Espíritu Play 360cc','6 unidades','15%'],['61032','Poett Aerosol Solo Para Ti 360cc','6 unidades','15%'],['61033','Poett Aerosol Despertar de Energía 360cc','6 unidades','15%'],
-    ['61035','Poett Aerosol Alegra tu Día 360cc','6 unidades','15%'],['50090','Poett Aerosol Huellitas 360cc','6 unidades','15%'],['61816','Selton Mata Mosquitos Rojo 360ml','6 unidades','20%'],
-    ['61731','Selton Mata Cucarachas Negro 360ml','6 unidades','15%'],['61814','Selton Mata Mosquitos Azul 360ml','6 unidades','15%'],['36012','Selton Espirales x 12 unid.','12 unidades','15%'],
-    ['50060','Selton Espirales Violetas x 12 unid.','12 unidades','15%'],['61046','Ayudín Ropa Blanca x 1 lt','15 unidades','18%'],['61047','Ayudín Ropa Blanca x 2 lt','8 unidades','18%'],
-    ['19861','Poett Fraganza Algodón Gatillo x 250','12 unidades','15%'],['19874','Poett Fraganza Suavidad Bebé Gatillo x 250','12 unidades','15%'],['19859','Poett Fraganza Sed. Primavera Gatillo x 250','12 unidades','15%'],
-    ['19860','Poett Fraganza Fresco Rocío Gatillo x 250','12 unidades','15%'],['32412','Poett Fraganza Alegra tu Día Gatillo x 250','12 unidades','15%'],['50087','Poett Fraganza Huellitas Gatillo x 250','12 unidades','15%'],
-    ['18147','Mortimer Esponja Cuadriculada','12 unidades','25%'],['36027','Mortimer Lisita 8/12CT','12 unidades','25%'],['36022','Mortimer Bolsa Normal x15 45x55','3 unidades','10%'],
-    ['36024','Mortimer Bolsa Mediana x15 50x60','3 unidades','10%'],['36026','Mortimer Bolsa Consorcio x10 60x90','3 unidades','10%'],['50017','Mortimer Guantes E.F. Naranja S','3 unidades','10%'],
-    ['50018','Mortimer Guantes E.F. Naranja M','3 unidades','10%'],['50019','Mortimer Guantes E.F. Naranja L','3 unidades','10%'],['50020','Mortimer Guantes Fuertes Verdes S','3 unidades','10%'],
-    ['50021','Mortimer Guantes Fuertes Verdes M','3 unidades','10%'],['50022','Mortimer Guantes Fuertes Verdes L','3 unidades','10%']]},
+    ['61035','Poett Aerosol Alegra tu Día 360cc','6 unidades','15%'],['50090','Poett Aerosol Huellitas 360cc','6 unidades','15%'],['61816','Selton Mata Mosquitos Rojo 360ml','6 unidades','15%'],
+    ['61730','Selton Mata Mosquitos Naranja 360ml','6 unidades','15%'],['61731','Selton Mata Cucarachas Negro 360ml','6 unidades','15%'],['61814','Selton Mata Mosquitos Azul 360ml','6 unidades','15%'],
+    ['36012','Selton Espirales x 12 unid.','6 unidades','15%'],['50060','Selton Espirales Violetas x 12 unid.','6 unidades','15%'],['61046','Ayudín Ropa Blanca x 1 lt','15 unidades','15%'],
+    ['61047','Ayudín Ropa Blanca x 2 lt','8 unidades','15%'],['32288','Trenet Doypack 400ml','8 unidades','15%'],['22963','Trenet Gatillo 500ml','6 unidades','15%'],
+    ['21313','Trenet Bolilla 120ml','6 unidades','15%'],['18147','Mortimer Esponja Cuadriculada','12 unidades','15%'],['36027','Mortimer Lisita 8/12CT','12 unidades','15%'],
+    ['18098','Mortimer Doble Cara Bronce','12 unidades','15%'],['36022','Mortimer Bolsa Normal x15 45x55','5 unidades','10%'],['36024','Mortimer Bolsa Mediana x15 50x60','5 unidades','10%'],
+    ['36026','Mortimer Bolsa Consorcio x10 60x90','5 unidades','10%'],['50017','Mortimer Guantes E.F. Naranja S','5 unidades','10%'],['50018','Mortimer Guantes E.F. Naranja M','5 unidades','10%'],
+    ['50019','Mortimer Guantes E.F. Naranja L','5 unidades','10%'],['50020','Mortimer Guantes Fuertes Verdes S','5 unidades','10%'],['50021','Mortimer Guantes Fuertes Verdes M','5 unidades','10%'],
+    ['50022','Mortimer Guantes Fuertes Verdes L','5 unidades','10%']]},
   // OM (golosinas)
   {p:'OM', t:'Golosinas: 10% a partir de 4 unidades surtidas', m:A, n:'A partir de 4 unidades surtidas de estos productos: 10% de descuento.', cols:['Cód.','Producto'], filas:[
     ['2331588','Flynn Paff bolsa tutti frutti 8x8gr'],['2332982','Flynn Paff chupetín manzana 18x18gr'],['2332900','Flynn Paff bolsa uva 36x8gr'],['2332820','Flynn Paff estuche yogur frutilla/banana 12x8gr'],
