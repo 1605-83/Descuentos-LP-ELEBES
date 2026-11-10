@@ -56,7 +56,7 @@ footer{margin-top:28px;color:var(--ink2);font-size:.8rem}
   <header>
     <div>
       <h1>Descuentos y dinámicas vigentes</h1>
-      <p class="sub">Lago Puelo · Elebes · copiado de la <a href="https://docs.google.com/spreadsheets/d/1CLs1VpJg1qK7XCdSD_sQGomniHcbyiakgwasUpkvGSc/edit" target="_blank" rel="noopener">planilla de descuentos</a> el 22/10/2026</p>
+      <p class="sub">Lago Puelo · Elebes · copiado de la <a href="https://docs.google.com/spreadsheets/d/1CLs1VpJg1qK7XCdSD_sQGomniHcbyiakgwasUpkvGSc/edit" target="_blank" rel="noopener">planilla de descuentos</a> el 22/10/2026 · Línea RM de Cepas actualizada el 10/11/2026</p>
     </div>
   </header>
   <div class="arriba">
@@ -125,9 +125,14 @@ const BLOQUES=[
   {p:'Ilolay', t:'Leche Ilolay (cód. 5200 - 5250)', m:A, n:'Acompañado de mínimo 3 unidades de 5322 o 5323.', esc:[['3 cajas','4,4%'],['5 cajas','6,6%'],['10 cajas','8,1%'],['15 cajas','10,3%'],['75 cajas o más','15,4%']]},
   {p:'OM', t:'Danbo Las Tres Niñas (cód. 13)', m:A, esc:[['1 caja','5%'],['3 cajas','8%'],['5 cajas','13%']]},
   // CEPAS
+  // Linea RM: dinamicas de noviembre 2026 (Bruno, 10/11/2026); reemplazan a las de octubre de esos productos
+  {p:'Cepas', t:'Línea RM · dinámicas de noviembre', m:A, n:'1882 al 20%: solo para clientes no compradores, tope máximo 250 clientes.', cols:['Producto','Observación','Regla / descuento'], filas:[
+    ['Martini Rosso','Producto sin cargo','5 + 1'],['Gancia Hibiscus 750','Descuento','8%'],['Gancia Cero','Descuento','8%'],
+    ['Fernet 1882 750 cc','','13,67%'],['Fernet 1882 750 cc','Solo para no compradores · tope máximo 250 clientes','20%'],
+    ['Tres Torres 1500','Producto sin cargo','11 + 1'],['Acción Lemon XL','','11 + 1'],['Acción Lemon lata','','11 + 1']]},
   {p:'Cepas', t:'Descuentos Cepas', m:A, cols:['Producto','Regla / descuento'], filas:[
-    ['Pronto 473ml','8%'],['Marcela','8%'],['Fever Tree','16%'],['Gancia Hibiscus 750','8%'],['Gancia Cero','8%'],['Fernet 1882 750 cc','13,67%'],['Bombay x 700','8%'],
-    ['Tres Torres','8%'],['Nikov','20%'],['Jamaica','30%'],['Acción Dr. Lemon XL','11 + 1'],['Acción Dr. Lemon lata','11 + 1'],['Martini Rosso','5 + 1'],['Todo Cepas lineal','5%']]},
+    ['Pronto 473ml','8%'],['Marcela','8%'],['Fever Tree','16%'],['Bombay x 700','8%'],
+    ['Nikov','20%'],['Jamaica','30%'],['Todo Cepas lineal','5%']]},
   // LEDESMA
   {p:'Ledesma', t:'Azúcar Ledesma clásica (cód. 69300)', m:A, esc:[['10 bultos','3%'],['50 bultos','6%'],['100 bultos','10%'],['130 bultos','15%']]},
   // OTRAS MARCAS
