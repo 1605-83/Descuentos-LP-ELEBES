@@ -56,7 +56,7 @@ footer{margin-top:28px;color:var(--ink2);font-size:.8rem}
   <header>
     <div>
       <h1>Descuentos y dinámicas vigentes</h1>
-      <p class="sub">Lago Puelo · Elebes · copiado de la <a href="https://docs.google.com/spreadsheets/d/1CLs1VpJg1qK7XCdSD_sQGomniHcbyiakgwasUpkvGSc/edit" target="_blank" rel="noopener">planilla de descuentos</a> el 22/10/2026 · Línea RM de Cepas actualizada el 10/11/2026</p>
+      <p class="sub">Lago Puelo · Elebes · copiado de la <a href="https://docs.google.com/spreadsheets/d/1CLs1VpJg1qK7XCdSD_sQGomniHcbyiakgwasUpkvGSc/edit" target="_blank" rel="noopener">planilla de descuentos</a> el 22/10/2026 · Softys y Línea RM de Cepas actualizadas el 10/11/2026 (dinámicas de noviembre)</p>
     </div>
   </header>
   <div class="arriba">
@@ -76,9 +76,12 @@ const BLOQUES=[
   {p:'Softys', t:'Cód. 1553 · Higienol', m:A, esc:[['1 a 9 bultos','15%'],['10 a 29','20%'],['60 o más (acompañado)','30%']]},
   {p:'Softys', t:'Cód. 1627 · Higienol HS Balanced', m:A, esc:[['1 a 9 bultos','10%'],['10 a 29','15%'],['60 o más','19%']]},
   {p:'Softys', t:'Cód. 5688', m:A, esc:[['1 a 29 bultos','5%'],['30 a 47','10%'],['48 o más','18%']]},
-  {p:'Softys', t:'Toallitas femeninas', m:G, n:'5 bultos o más', esc:[['5 bultos o más','3%']]},
-  {p:'Softys', t:'Pañales', m:G, n:'Sin mínimo', esc:[['Sin mínimo','10%']]},
-  {p:'Softys', t:'Cód. 1585', m:G, n:'Acompañado', esc:[['1 a 14 bultos','15%'],['15 o más','21%']]},
+  // dinamicas de noviembre 2026 (Bruno, 10/11/2026): reemplazan a las de octubre de toallitas femeninas, pañales y cód. 1585
+  {p:'Softys', t:'Noviembre · Cód. 1622 · 2612 · 2607 · 1590 · 7915 · 1585', m:A, n:'Pueden ser surtidos o un solo código.', esc:[['2 bultos mínimo','8%'],['4 bultos mínimo','12%'],['8 bultos mínimo','15%']]},
+  {p:'Softys', t:'Noviembre · Pañales Ultrasoft (todos los celestes)', m:G, esc:[['Lineal','10%']]},
+  {p:'Softys', t:'Noviembre · Pañales Premium Soft, Pant, Super Premium y Adulto', m:G, esc:[['2 bultos mínimo','13%']]},
+  {p:'Softys', t:'Noviembre · Toallas femeninas', m:G, n:'Surtido de nocturnas y protector diario. Siempre tiene que sumar Piel Sensible (cód. 9768); en 3 bultos tampoco puede faltar TF verde.',
+    esc:[['1 bulto (40 unid.)','4%'],['3 bultos (120 unid.) surtidos','7%']]},
   // CLOROX
   {p:'Clorox', t:'Cód. 17927', m:G, esc:ESC_CLOROX},
   {p:'Clorox', t:'Cód. 36003', m:G, esc:ESC_CLOROX},
