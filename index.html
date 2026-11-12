@@ -39,6 +39,11 @@ th,td{padding:6px 6px;border-bottom:1px solid #EEF1F5;text-align:left;vertical-a
 th{font-size:.72rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink2);font-weight:700}
 td.cod{font-family:var(--f-num);color:var(--ink2);white-space:nowrap}
 td.d,th.d{text-align:right;white-space:nowrap}
+/* tablas anchas (Georgalos, 5 columnas): la tarjeta ocupa todo el ancho y el descuento queda dentro del cuadro (Bruno, 12/11/2026) */
+.card.ancha{grid-column:1/-1}
+.tw{overflow-x:auto;margin:0 -4px}
+.card.ancha td:nth-child(3),.card.ancha td:nth-child(4){white-space:nowrap;font-family:var(--f-num);font-size:.84rem}
+@media (max-width:600px){.card.ancha table{font-size:.8rem}.card.ancha th,.card.ancha td{padding:6px 4px}.card.ancha td:nth-child(3),.card.ancha td:nth-child(4){font-size:.76rem}.card.ancha td.d b{font-size:.88rem}}
 td.d b{font-family:var(--f-num);font-size:1rem;color:var(--auto)}
 .escala{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
 .esc{flex:1 1 72px;min-width:72px;border:1px solid var(--line);border-radius:9px;padding:6px 8px;text-align:center;background:#FAFBFD}
@@ -182,10 +187,10 @@ function dibujar(){
       const filas=b.filas? b.filas.filter(f=>enTit || norm(f.join(' ')).includes(q)) : null;
       if(!enTit && !(filas&&filas.length)) return '';
       const tag=b.m? `<span class="tag ${b.m===A?'t-auto':'t-grupo'}">${b.m===A?'Sale automático':'Pasar al grupo'}</span>` : '';
-      let c=`<div class="card"><h3><span>${hl(b.t,q)}</span>${tag}</h3>${b.n? `<p class="nota">${hl(b.n,q)}</p>` : ''}`;
+      let c=`<div class="card${b.cols&&b.cols.length>=5?' ancha':''}"><h3><span>${hl(b.t,q)}</span>${tag}</h3>${b.n? `<p class="nota">${hl(b.n,q)}</p>` : ''}`;
       if(b.esc) c+=`<div class="escala">${b.esc.map(e=>`<div class="esc"><small>${esc(e[0])}</small><b>${esc(e[1])}</b></div>`).join('')}</div>`;
       if(filas){ const nd=b.cols.length-1;
-        c+=`<table><thead><tr>${b.cols.map((x,i)=>`<th class="${i===nd?'d':''}">${esc(x)}</th>`).join('')}</tr></thead><tbody>${filas.map(f=>`<tr>${f.map((x,i)=>`<td class="${i===nd?'d':(b.cols[i]==='Cód.'?'cod':'')}">${i===nd? `<b>${esc(x)}</b>` : hl(x,q)}</td>`).join('')}</tr>`).join('')}</tbody></table>`; }
+        c+=`<div class="tw"><table><thead><tr>${b.cols.map((x,i)=>`<th class="${i===nd?'d':''}">${esc(x)}</th>`).join('')}</tr></thead><tbody>${filas.map(f=>`<tr>${f.map((x,i)=>`<td class="${i===nd?'d':(b.cols[i]==='Cód.'?'cod':'')}">${i===nd? `<b>${esc(x)}</b>` : hl(x,q)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`; }
       return c+'</div>';
     }).join('');
     if(cards) h+=`<section><h2>${esc(p)}</h2><div class="grid">${cards}</div></section>`;
